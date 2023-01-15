@@ -10,6 +10,8 @@ function App() {
   function changePage(){
     setPage(prevPage => !prevPage)
   }
+
+    
   return (
     <div className="App">
         {!page ? <Start togglePage={changePage}/> : <Main />}
