@@ -24,7 +24,22 @@ const Main1 = () => {
 
   function changeColor(event) {
     setColor(color === "#F5F7FB" ? "#D6DBF5" : "#F5F7FB");
+    event.target.style.backgroundColor = color;
   }
+
+  function checkAns(){
+    const cAns= document.querySelectorAll('.c-ans');
+    for (let i = 0; i < cAns.length; i++) {
+      // change the style of each element
+      cAns[i].style.backgroundColor = "#94D7A2";
+    }
+  }
+
+
+  function reLoad(){
+    window.location.reload()
+  }
+
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -43,7 +58,6 @@ const Main1 = () => {
         {item.incorrect_answers.map((item1) => (
           <>
             <p
-              style={{ backgroundColor: color }}
               onClick={changeColor}
               className="ans"
               >
@@ -55,9 +69,8 @@ const Main1 = () => {
         ))}
 
           <p
-              style={{ backgroundColor: color }}
               onClick={changeColor}
-              className="ans"
+              className="ans c-ans"
               >
               {item.correct_answer}
           </p>
@@ -70,6 +83,8 @@ const Main1 = () => {
   return (
     <div className="main-container">
       <div>{questions}</div>
+      <div className="check-ans btn12" onClick={checkAns}>Answer</div>
+      <div className="play-again btn12" onClick={reLoad}>Play Again</div>
     </div>
   );
 };
